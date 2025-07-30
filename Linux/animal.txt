@@ -1,0 +1,5 @@
+dog 20 a
+cat 30 b
+cow 7 c
+sheep 5 d
+goat 10 e
