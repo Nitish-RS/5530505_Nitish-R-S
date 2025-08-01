@@ -8,7 +8,7 @@ Screenshot of the Git certificate from simplilearn
 
 ![alt text](Git/Git_certificate.png)
 
-Cerificate of Codesignal 
+Certificate of Codesignal 
 
 ![alt text](Git/Git_ceritificate_codesignal.png)
 
@@ -22,6 +22,10 @@ Screenhot of linux commands history assignment 2
 
 ![alt text](Linux/ss_cmd_history/ss_a2_1.png)
 ![alt text](Linux/ss_cmd_history/ss_a2_2.png)
+
+Certificate of the sololearn basic introduction to c
+
+![alt text](C_Programming/Certificate/basic_c_certificate.jpg)
 
 
 
