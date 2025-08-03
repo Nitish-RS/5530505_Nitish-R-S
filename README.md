@@ -27,5 +27,9 @@ Certificate of the sololearn basic introduction to c
 
 ![alt text](C_Programming/Certificate/basic_c_certificate.jpg)
 
+Certificate of sololearn C Intermediate
+
+![alt text](C_Programming/Certificate/c_intermediate_cetificate.jpg)
+
 
 
