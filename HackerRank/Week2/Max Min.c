@@ -16,44 +16,28 @@ char* rtrim(char*);
 int parse_int(char*);
 
 /*
- * Complete the 'pageCount' function below.
+ * Complete the 'maxMin' function below.
  *
  * The function is expected to return an INTEGER.
  * The function accepts following parameters:
- *  1. INTEGER n
- *  2. INTEGER p
+ *  1. INTEGER k
+ *  2. INTEGER_ARRAY arr
  */
-
-int pageCount(int n, int p) {
-    int i,sum1=0,sum2=0;
-    if (p==1){
-        sum1=0;
-    }
-    else{
-        for (i=2;i<=n;i+=2){
-            sum1++;
-            if(i==p ||i+1==p){
-                break;
-            }
+int cmp(const void* a,const void* b){
+    return(*(int*)a- *(int*)b);
+}
+int maxMin(int k, int arr_count, int* arr) {
+    int i,unf,cunf;
+    qsort(arr,arr_count,sizeof(int),cmp);
+    unf=arr[arr_count-1];
+    
+    for(i=0;i<=arr_count-k;i++){
+        cunf=arr[i+k-1]-arr[i];
+        if(cunf<unf){
+            unf=cunf;
         }
     }
-    if ((n % 2 == 1 && (p == n || p == n - 1)) || (n % 2 == 0 && p == n)) {
-        sum2 = 0;
-    } 
-    else {
-        for (i = (n % 2 == 0 ? n - 1 : n - 2); i > 0; i -= 2) {
-            sum2++;
-            if (i == p || i - 1 == p) {
-                break;
-            }
-        }
-    }
-    if (sum1>sum2){
-        return sum2;
-    }
-    else {
-        return sum1;
-    }
+    return(unf);
 }
 
 int main()
@@ -62,9 +46,17 @@ int main()
 
     int n = parse_int(ltrim(rtrim(readline())));
 
-    int p = parse_int(ltrim(rtrim(readline())));
+    int k = parse_int(ltrim(rtrim(readline())));
 
-    int result = pageCount(n, p);
+    int* arr = malloc(n * sizeof(int));
+
+    for (int i = 0; i < n; i++) {
+        int arr_item = parse_int(ltrim(rtrim(readline())));
+
+        *(arr + i) = arr_item;
+    }
+
+    int result = maxMin(k, n, arr);
 
     fprintf(fptr, "%d\n", result);
 

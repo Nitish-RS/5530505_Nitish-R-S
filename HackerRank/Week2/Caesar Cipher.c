@@ -16,44 +16,49 @@ char* rtrim(char*);
 int parse_int(char*);
 
 /*
- * Complete the 'pageCount' function below.
+ * Complete the 'caesarCipher' function below.
  *
- * The function is expected to return an INTEGER.
+ * The function is expected to return a STRING.
  * The function accepts following parameters:
- *  1. INTEGER n
- *  2. INTEGER p
+ *  1. STRING s
+ *  2. INTEGER k
  */
 
-int pageCount(int n, int p) {
-    int i,sum1=0,sum2=0;
-    if (p==1){
-        sum1=0;
-    }
-    else{
-        for (i=2;i<=n;i+=2){
-            sum1++;
-            if(i==p ||i+1==p){
-                break;
-            }
+/*
+ * To return the string from the function, you should either do static allocation or dynamic allocation
+ *
+ * For example,
+ * char* return_string_using_static_allocation() {
+ *     static char s[] = "static allocation of string";
+ *
+ *     return s;
+ * }
+ *
+ * char* return_string_using_dynamic_allocation() {
+ *     char* s = malloc(100 * sizeof(char));
+ *
+ *     s = "dynamic allocation of string";
+ *
+ *     return s;
+ * }
+ *
+ */
+char* caesarCipher(char* s, int k) {
+    int len=strlen(s),i;
+    char* r= malloc(len+1);
+    for(i=0;i<len;i++){
+        if(s[i]>='a' && s[i]<='z'){
+            r[i]=((s[i]-'a'+k)%26)+'a';
+        }
+        else if(s[i]>='A' && s[i]<='Z'){
+            r[i]=((s[i]-'A'+k)%26)+'A';
+        } 
+        else {
+            r[i]=s[i];
         }
     }
-    if ((n % 2 == 1 && (p == n || p == n - 1)) || (n % 2 == 0 && p == n)) {
-        sum2 = 0;
-    } 
-    else {
-        for (i = (n % 2 == 0 ? n - 1 : n - 2); i > 0; i -= 2) {
-            sum2++;
-            if (i == p || i - 1 == p) {
-                break;
-            }
-        }
-    }
-    if (sum1>sum2){
-        return sum2;
-    }
-    else {
-        return sum1;
-    }
+    return r;
+
 }
 
 int main()
@@ -62,11 +67,13 @@ int main()
 
     int n = parse_int(ltrim(rtrim(readline())));
 
-    int p = parse_int(ltrim(rtrim(readline())));
+    char* s = readline();
 
-    int result = pageCount(n, p);
+    int k = parse_int(ltrim(rtrim(readline())));
 
-    fprintf(fptr, "%d\n", result);
+    char* result = caesarCipher(s, k);
+
+    fprintf(fptr, "%s\n", result);
 
     fclose(fptr);
 
